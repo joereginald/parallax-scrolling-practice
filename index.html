@@ -13,7 +13,7 @@
     <header>
         <a href="#" class="logo">Logo</a>
         <ul>
-            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#" class="active" id="home">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Work</a></li>
             <li><a href="#">Contract</a></li>
@@ -33,7 +33,10 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, ad eos, debitis id quibusdam ex eaque porro cumque non voluptatum placeat reprehenderit adipisci quia, facere soluta. Illo voluptates, sunt quia ut fugit tempore. Blanditiis maxime molestias minus temporibus ut voluptates a numquam quibusdam, fugit et, odio laudantium cum necessitatibus quia modi neque repudiandae eos? Odit quisquam similique minima a perferendis. Sint ea eius nisi necessitatibus quis ad consectetur quasi doloremque quos qui reiciendis eaque aperiam quibusdam, commodi ut nulla sequi. Mollitia ipsa, explicabo quibusdam nobis labore, ut debitis sint inventore, at voluptatem similique quae minus. Culpa molestiae est optio ullam!</p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, ad eos, debitis id quibusdam ex eaque porro cumque non voluptatum placeat reprehenderit adipisci quia, facere soluta. Illo voluptates, sunt quia ut fugit tempore. Blanditiis maxime molestias minus temporibus ut voluptates a numquam quibusdam, fugit et, odio laudantium cum necessitatibus quia modi neque repudiandae eos? Odit quisquam similique minima a perferendis. Sint ea eius nisi necessitatibus quis ad consectetur quasi doloremque quos qui reiciendis eaque aperiam quibusdam, commodi ut nulla sequi. Mollitia ipsa, explicabo quibusdam nobis labore, ut debitis sint inventore, at voluptatem similique quae minus. Culpa molestiae est optio ullam!</p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, ad eos, debitis id quibusdam ex eaque porro cumque non voluptatum placeat reprehenderit adipisci quia, facere soluta. Illo voluptates, sunt quia ut fugit tempore. Blanditiis maxime molestias minus temporibus ut voluptates a numquam quibusdam, fugit et, odio laudantium cum necessitatibus quia modi neque repudiandae eos? Odit quisquam similique minima a perferendis. Sint ea eius nisi necessitatibus quis ad consectetur quasi doloremque quos qui reiciendis eaque aperiam quibusdam, commodi ut nulla sequi. Mollitia ipsa, explicabo quibusdam nobis labore, ut debitis sint inventore, at voluptatem similique quae minus. Culpa molestiae est optio ullam!</p>
+        <!-- <a href="#" id="backToTop" onclick="backToTop()"> Back to Top </a> -->
     </div>
+    <button onclick="topFunc()" id="topBtn">Go to Top</button>
+
 
     <script>
         let stars = document.getElementById('stars');
@@ -43,11 +46,12 @@
         let btn = document.getElementById('btn');
         let mountains_front = document.getElementById('mountains_front');
         let header = document.querySelector('header');
+        let topBtn = document.getElementById('topBtn');
 
-        window.addEventListener('scroll', function(){
+        document.addEventListener('scroll', function(){
             let value = window.scrollY;
             stars.style.left = value  * 0.25+ 'px';
-            moon.style.top = value  * 1.05+ 'px';
+            moon.style.top = Math.min(value  * 1.05, mountains_behind.height)+ 'px';
             mountains_behind.style.top = value  * 0.5 + 'px';
             mountains_front.style.top = value  * 0 + 'px';
             text.style.marginRight = value  * 3 + 'px';
@@ -55,6 +59,53 @@
             btn.style.marginTop = value  * 1.5 + 'px';
             header.style.top = value  * 0.5+ 'px';
         })
+        
+        // function fadeIn(element) {
+        //     var op = 0.1; //initial opacity
+        //     element.style.display = 'block';
+        //     var timer = setInterval(function () {
+        //         if (op >= 1){
+        //             clearInterval(timer);
+        //         }
+        //         element.style.opacity = op;
+        //         element.style.filter = 'alpha(opacity=' + op*100 + ")";
+        //         op += op*0,1;
+        //     }, 10);
+        // }
+
+        // function fadeOut(element) {
+        //     var op = 1; //initial opacity
+        //     var timer = setInterval(function () {
+        //         if (op <= 0.1){
+        //             clearInterval(timer);
+        //             element.style.display = 'none';
+        //         }
+        //         element.style.opacity = op;
+        //         element.style.filter = 'alpha(opacity=' + op*100 + ")";
+        //         op -= op*0.1;
+        //     }, 50);
+        // }
+
+        function scrollFunc() {
+            // if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                if (window.pageYOffset > 300) {
+                // fadeOut(topBtn);
+                topBtn.style.display = "block";
+            } else {
+                // fadeIn(topBtn);
+                topBtn.style.display = "none";
+            }
+        }
+
+        window.onscroll = function() {
+            scrollFunc();
+        }
+
+        function topFunc() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
     </script>
 </body>
 

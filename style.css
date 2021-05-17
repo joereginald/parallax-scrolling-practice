@@ -62,6 +62,7 @@ header ul li a {
     padding: 0.375em 0.9375em;
     color: var(--white);    
     border-radius: 1.25em;
+    transition: background 200ms ease;
 }
 
 header ul li a:hover, 
@@ -120,12 +121,19 @@ section img#mountains_front {
 #btn {
     text-decoration: none;
     padding: 0.5em 1.875em;
+    border: solid var(--white);
     border-radius: 2.5em;
     background: var(--white);
     color: var(--dkpurple);
     font-size: 1em;
     z-index: 8;
     transform: translateY(6.25em);
+    transition: background-color 200ms ease;
+}
+
+#btn:hover{
+    background-color: transparent;
+    color: var(--white);
 }
 
 .sec {
@@ -144,5 +152,46 @@ section img#mountains_front {
 
 .sec p {
     font-size: 1.2em;
+    color: var(--white);
+}
+
+/* #backToTop {
+    display: none;
+    text-decoration: none;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1em;
+    
+    padding: 0.5em 1.875em;
+    border: solid var(--white);
+    border-radius: 2.5em;
+    background: var(--white);
+    color: var(--dkpurple);
+    font-size: 1em;
+}
+
+#backToTop:hover{
+    background-color: var(--dkpurple);
+    color: var(--white);
+} */
+
+#topBtn {
+    display: none;
+    position: fixed;
+    bottom: 1.25em;
+    right: 1.875em;
+    z-index: 1001;
+    font-size: 1.25em;
+    border: solid var(--white);
+    background-color: var(--white);
+    color: var(--dkpurple);
+    cursor: pointer;
+    padding: 0.5em 1.875em;
+    border-radius: 2.5em;
+    transition: background-color 200ms ease;
+}
+
+#topBtn:hover {
+    background-color: var(--dkpurple);
     color: var(--white);
 }
